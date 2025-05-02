@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            20% { color: #ffff00; }
+            40% { color: #00ff00; }
+            60% { color: #00ffff; }
+            80% { color: #0000ff; }
+            100% { color: #ff0000; }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .error-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-left: 10vw;
+            text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
+            height: 80vh;
+        }
+
+        .error-text span {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12vw;
+            line-height: 1;
+            text-align: left;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            animation: rainbow 8s linear infinite;
+        }
+
+        .error-text span:nth-child(2) {
+            animation-delay: -2.6s;
+        }
+
+        .error-text span:nth-child(3) {
+            animation-delay: -5.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-text">
+        <span>PAGE</span>
+        <span>NOT</span>
+        <span>FOUND</span>
+    </div>
+</body>
+</html>

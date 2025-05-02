@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Переадресация...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .redirect-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none; /* Скрыта изначально */
+    }
+    .redirect-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Вы будете перенаправлены через <span id="countdown">10</span> секунд...</h1>
+  <p id="wait-text">Пожалуйста, подождите...</p>
+  <button id="redirectBtn" class="redirect-button">Перейти сейчас</button>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    let countdown = 10;
+    const countdownEl = document.getElementById('countdown');
+    const redirectBtn = document.getElementById('redirectBtn');
+    const waitText = document.getElementById('wait-text');
+
+    const redirectUrl = [[${Link.link}]];
+
+    const timer = setInterval(() => {
+      countdown--;
+      countdownEl.textContent = countdown;
+
+      if (countdown <= 0) {
+        clearInterval(timer);
+
+        // Показываем кнопку
+        redirectBtn.style.display = 'inline-block';
+        waitText.textContent = 'Если вы не были перенаправлены, нажмите кнопку ниже:';
+
+        // Автоматический переход
+        window.location.href = redirectUrl;
+      }
+    }, 1000);
+
+    redirectBtn.addEventListener('click', () => {
+      window.location.href = redirectUrl;
+    });
+    /*]]>*/
+  </script>
+</body>
+</html>
