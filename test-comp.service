@@ -1,0 +1,22 @@
+[Unit]
+Description=Test Link-compresser auto deploy
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=jenkins
+WorkingDirectory=/home/jenkins/compress-linj
+ExecStart=/usr/bin/java -jar /opt/my-java-app/complink.jar
+
+Restart=on-failure
+RestartSec=10
+
+LimitNOFILE=65536
+LimitNPROC=4096
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=java-complink
+
+[Install]
+WantedBy=multi-user.target
